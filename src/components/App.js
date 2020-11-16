@@ -5,8 +5,6 @@ import AppHeader from "./app-header";
 import ItemList from './item-list';
 import PersoneDetails from './person-details';
 import RandomPlanet from "./random-planet";
-import PlanetDetails from './planet-details';
-import StarshipDetails from './starship-details';
 
 import './App.scss';
 
@@ -16,11 +14,20 @@ export class App extends Component {
 
     render(){
         return (
-            <div className="App">
-                <button onClick={this.getPeople}>click</button>
-                <h1> {this.state.data.name} </h1>
+            <div>
+              <AppHeader />
+              <RandomPlanet />
+        
+              <div className="row mb2">
+                <div className="col-md-6">
+                  <ItemList />
+                </div>
+                <div className="col-md-6">
+                  <PersoneDetails />
+                </div>
+              </div>
             </div>
-    );
+          );
   }
 }
 
