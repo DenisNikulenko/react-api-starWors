@@ -1,0 +1,102 @@
+@keyframes ldio-kfp2etxzsgg {
+  0% { transform: rotate(0) }
+  100% { transform: rotate(360deg) }
+}
+
+.ldio-kfp2etxzsgg div { box-sizing: border-box!important }
+.ldio-kfp2etxzsgg > div {
+  position: absolute;
+  width: 92px;
+  height: 92px;
+  top: 4px;
+  left: 4px;
+  border-radius: 50%;
+  border: 8px solid #c7beb1;
+  border-color: #c7beb1 transparent #c7beb1 transparent;
+  animation: ldio-kfp2etxzsgg 5s linear infinite;
+}
+
+.ldio-kfp2etxzsgg > div:nth-child(2), .ldio-kfp2etxzsgg > div:nth-child(4) {
+  width: 74px;
+  height: 74px;
+  top: 13px;
+  left: 13px;
+  animation: ldio-kfp2etxzsgg 5s linear infinite reverse;
+}
+
+.ldio-kfp2etxzsgg > div:nth-child(2) {
+  border-color: transparent #4fb130 transparent #4fb130
+}
+
+.ldio-kfp2etxzsgg > div:nth-child(3) { border-color: transparent }
+.ldio-kfp2etxzsgg > div:nth-child(3) div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+}
+
+.ldio-kfp2etxzsgg > div:nth-child(3) div:before, .ldio-kfp2etxzsgg > div:nth-child(3) div:after { 
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: -8px;
+  left: 34px;
+  background: #c7beb1;
+  border-radius: 50%;
+  box-shadow: 0 84px 0 0 #c7beb1;
+}
+
+.ldio-kfp2etxzsgg > div:nth-child(3) div:after {
+  left: -8px;
+  top: 34px;
+  box-shadow: 84px 0 0 0 #c7beb1;
+}
+
+.ldio-kfp2etxzsgg > div:nth-child(4) { border-color: transparent; }
+.ldio-kfp2etxzsgg > div:nth-child(4) div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+}
+
+.ldio-kfp2etxzsgg > div:nth-child(4) div:before, .ldio-kfp2etxzsgg > div:nth-child(4) div:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: -8px;
+  left: 25px;
+  background: #4fb130;
+  border-radius: 50%;
+  box-shadow: 0 66px 0 0 #4fb130;
+}
+
+.ldio-kfp2etxzsgg > div:nth-child(4) div:after {
+  left: -8px;
+  top: 25px;
+  box-shadow: 66px 0 0 0 #4fb130;
+}
+
+.loadingio-spinner-double-ring-sung59nhs1k {
+  width: 74px;
+  height: 74px;
+  display: inline-block;
+  overflow: hidden;
+  background: #303030;
+}
+
+.ldio-kfp2etxzsgg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(0.74);
+  backface-visibility: hidden;
+  transform-origin: 0 0;
+}
+
+.ldio-kfp2etxzsgg div { box-sizing: content-box; }
