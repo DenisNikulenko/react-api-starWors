@@ -6,7 +6,6 @@ import SwapiService from "../../services/swapi-service";
 
 import "./random-planet.scss";
 
-
 export default class RandomPlanet extends Component {
     swapiService = new SwapiService();
 
@@ -20,6 +19,7 @@ export default class RandomPlanet extends Component {
         this.updatePlanet();
         this.interval = setInterval(this.updatePlanet, 15000);
     }
+      
     componentWillUnmount() {
         clearInterval(this.interval);
     }
@@ -31,8 +31,8 @@ export default class RandomPlanet extends Component {
         });
     }
    
-    onError = () => {
-        this.setState(({
+    onError = err  => {
+        this.setState(({ 
             loading: false,
             error: true,
         }))
