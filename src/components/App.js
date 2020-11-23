@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import SwapiService from "../services/swapi-service"
+import SwapiService from "../services/swapi-service";
 
 import AppHeader from "./app-header";
-import ItemList from './item-list';
-import PersonDetails from './person-details';
 import RandomPlanet from "./random-planet";
-import PeoplePage from './people-page'
-import ErrorIndicators  from './error-indicators'
+import PeoplePage from './people-page';
+import ErrorBoundry  from './error-boundry';
 
 import './App.scss';
 
@@ -33,9 +31,7 @@ export class App extends Component {
 
     render(){
 
-        if (this.state.hasError) {
-            return <ErrorIndicators />
-        }
+    
         
         const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
@@ -51,30 +47,6 @@ export class App extends Component {
 
                 <div className="pages">
                     <PeoplePage />
-
-                    {/* <div className="row mb2 page-planet">
-                        <div className="col-md-6">
-                            <ItemList 
-                                onItemSelected={this.onPersonSelected} 
-                                getData={this.swapiService.getAllPlanets}
-                                renderItems={item=> item.name}/>
-                        </div>
-                        <div className="col-md-6">
-                            <PersonDetails personId={this.state.selectPerson} />
-                        </div>
-                    </div>
-                    
-                    <div className="row mb2 page-starship">
-                        <div className="col-md-6">
-                            <ItemList 
-                                onItemSelected={this.onPersonSelected} 
-                                getData={this.swapiService.getAllStarships} 
-                                renderItems={item=> item.name}/>
-                        </div>
-                        <div className="col-md-6">
-                            <PersonDetails personId={this.state.selectPerson} />
-                        </div>
-                    </div> */}
                 </div>
 
             </div>
