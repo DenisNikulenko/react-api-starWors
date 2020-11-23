@@ -6,31 +6,34 @@ import SwapiService from '../../services/swapi-service';
 import "./item-list.scss";
 
 export default class ItemList extends Component {
-    
-    swapiServices = new SwapiService(); 
 
     state = {
-        peopleList: null
+        itemList : null
     }
 
     componentDidMount() {
-        this.swapiServices.getAllPeople()
-            .then((peopleList) => {
+        const { getData } = this.props;
+        getData()
+            .then((itemList) => {
                 this.setState({
-                    peopleList
+                    itemList
                 })
             })
     }
 
 
     renderItems(arr) {
-        return arr.map(({id,name}) => {
+        
+        return arr.map(item => {
+            const { id } = item; 
+            const label = this.props.renderItems(item);
+
             return (
                 <li className="list-group-item"
                     key={id}
                     onClick={() => this.props.onItemSelected(id)}
                 >
-                    {name}
+                    {label}
                 </li>    
             )
         })
@@ -38,25 +41,16 @@ export default class ItemList extends Component {
 
     render() {
 
-        const {peopleList} = this.state;
+        const {itemList} = this.state;
         
-        if (!peopleList) {
+        if (!itemList) {
             return <Spinner />
         };
 
-        const items = this.renderItems(peopleList);
+        const items = this.renderItems(itemList);
         return (
             <ul className="item-list list-group">
                 {items }
-                {/* <li className="list-group-item">
-                    Luke Skywalker
-                </li>
-                <li className="list-group-item">
-                    Darth Vader
-                </li>
-                <li className="list-group-item">
-                    R2-D2
-                </li> */}
             </ul>
       );
     }
