@@ -23,7 +23,7 @@ export default class SwapiService {
       return this._transformPerson(person);
     };
 
-    getPersonImage = ({id}) => {
+    getPersonImage = ({ id }) => {
       return `${this._imageBase}/characters/${id}.jpg`
     };
   
@@ -46,16 +46,17 @@ export default class SwapiService {
       return res.results.map(this._transformStarship);
     };
   
-    getStarship =  async id => {
-      const starship = this.getResource(`/starships/${id}/`);
-      return this._transformStarship(starship);
+    getStarship = async id => {
+      const starship = this.getResource(`/starships/${id}/`)
+        return this._transformStarship(starship)
     };
-
+ 
     getStarshipsImage = ({id}) => {
       return `${this._imageBase}/starships/${id}.jpg`
     };
   
-    _extractId = (item) => {
+    _extractId = item => {
+      // console.log(item);
       const idRegExp = /\/([0-9]*)\/$/;
       return item.url.match(idRegExp)[1];
     };
@@ -71,20 +72,22 @@ export default class SwapiService {
     };
   
     _transformStarship = starship => {
+      // console.log(starship);
       return {
         id: this._extractId(starship),
         name: starship.name,
         model: starship.model,
         manufacturer: starship.manufacturer,
-        costInCredits: starship.costInCredits,
+        costInCredits: starship.cost_in_credits,
         length: starship.length,
         crew: starship.crew,
         passengers: starship.passengers,
-        cargoCapacity: starship.cargoCapacity
+        cargoCapacity: starship.cargo_capacity
       }
     };
   
     _transformPerson = person => {
+      // console.log(person);
       return {
         id: this._extractId(person),
         name: person.name,
