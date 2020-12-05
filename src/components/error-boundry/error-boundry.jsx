@@ -1,36 +1,26 @@
+
 import React, { Component } from 'react';
 
-import "./error-boundry.scss";
-import icon from "./death-star.png";
+import ErrorIndicator from '../error-indicator/error-indicator';
 
-class ErrorBoundry extends Component {
-    state = {
-        hasError:false
-    };
+export default class ErrorBoundry extends Component {
 
-    componentDidCatch(){
-        this.setState({ hasError: true });
-    };
+  state = {
+    hasError: false
+  };
 
-    render() {
+  componentDidCatch() {
+    this.setState({
+      hasError: true
+    });
+  }
 
-        if (this.state.hasError) {
-            return (    
-                <div className="error-indicator">
-                    <img src={icon} alt="error icon"/>
-                    <span className="boom">Boom!</span>
-                    <span>
-                        something has gone terribly wrong
-                    </span>
-                    <span>
-                        (but we already sent droids to fix it)
-                    </span>
-                </div>
-            )
-        };
+  render() {
 
-        return this.props.children;
-    };
+    if (this.state.hasError) {
+      return <ErrorIndicator />
+    }
+
+    return this.props.children;
+  }
 }
-
-export default ErrorBoundry;

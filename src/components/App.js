@@ -1,85 +1,90 @@
 import React, { Component } from 'react';
-import SwapiService from "../services/swapi-service";
 
-import AppHeader from "./app-header";
+import Header from "./app-header";
 import RandomPlanet from "./random-planet";
-import PeoplePage from './people-page';
-import Row from "./row";
-import ItemDetails, { Record }  from "./item-details";
-import ErrorBoundry  from './error-boundry';
+import Row from "./row/row";
+import ItemDetails, { Record } from "./item-details/item-details";
+import ItemList from "./item-list";
+import SwapiService from "./../services/swapi-service";
+import ErrorBoundry from "./error-boundry";
 
-import './App.scss';
 
-export class App extends Component {
-    
-    swapiService = new SwapiService();
-    
-    state = {
-        showRandomPlanet: true,
-        hasError: false
-    };
+import "./App.scss";
 
-    componentDidCatch() {
-        this.setState({ hasError: true })
-    }
+export default class App extends Component {
 
-    toggleRandomPlanet = () => {
-        this.setState((state) => {
-            return {
-                showRandomPlanet: !state.showRandomPlanet
-            };
-        });
-    };
+  swapiService = new SwapiService();
 
-    render(){
+  state = {
+    showRandomPlanet: true
+  };
 
-        const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
+  toggleRandomPlanet = () => {
+    this.setState((state) => {
+      return {
+        showRandomPlanet: !state.showRandomPlanet
+      }
+    });
+  };
 
-        const { getPerson, getPlanet, getPersonImage, getPlanetImage } = this.swapiService;
+  render() {
 
-        const personDetails = (
-            <ItemDetails 
-                itemId={11} 
-                getData={getPerson} 
-                getImageUrl={getPersonImage} 
-            >
-                <Record field="gender" label="Gender" />
-                <Record field="birthYear" label="Birth Year" />
-                <Record field="gender" label="Gender" />
-            </ItemDetails>
-        )
-        const planetDetails = (
-            <ItemDetails 
-                itemId={13} 
-                getData={getPlanet} 
-                getImageUrl={getPlanetImage}
-            >
-                <Record field="population" label="Genpopulationder" />
-                <Record field="rotationPeriod" label="Rotation-period" />
-                <Record field="diameter" label="Diameter" />
-            </ItemDetails>
-        )
+    const planet = this.state.showRandomPlanet ?
+      <RandomPlanet/> :
+      null;
 
-        return (
-            <ErrorBoundry>
+    const { getPerson,
+            getStarship,
+            getPersonImage,
+            getStarshipImage,
+            getAllPeople,
+            getAllPlanets } = this.swapiService;
 
-                <div className="stardb-app">
-                    <AppHeader />
-                    { planet }
-                    {/* <button
-                        className="toggle-planet btn btn-warning btn-lg"
-                        onClick={this.toggleRandomPlanet}
-                    >Toggle Random Planet</button> */}
-                    {/* <PeoplePage /> */}
+    const personDetails = (
+      <ItemDetails
+        itemId={11}
+        getData={getPerson}
+        getImageUrl={getPersonImage} >
 
-                    <Row
-                        left={personDetails}
-                        right={planetDetails} />
-                </div>
+        <Record field="gender" label="Gender" />
+        <Record field="eyeColor" label="Eye Color" />
 
-            </ErrorBoundry>
-        );
-    } 
+      </ItemDetails>
+    );
+
+    const starshipDetails = (
+      <ItemDetails
+        itemId={5}
+        getData={getStarship}
+        getImageUrl={getStarshipImage}>
+
+        <Record field="model" label="Model" />
+        <Record field="length" label="Length" />
+        <Record field="costInCredits" label="Cost" />
+      </ItemDetails>
+    );
+
+    return (
+      <ErrorBoundry>
+        <div className="stardb-app">
+          <Header />
+
+          <ItemList
+            getData={getAllPeople}
+            onItemSelected={() => {}}>
+
+            { ({name}) => <span>{name}</span> }
+          </ItemList>
+
+          <ItemList
+            getData={getAllPlanets}
+            onItemSelected={() => {}}>
+
+            { ({name}) => <span>{name}</span> }
+          </ItemList>
+
+        </div>
+      </ErrorBoundry>
+    );
+  }
 }
-
-export default App;
