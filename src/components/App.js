@@ -65,7 +65,7 @@ export class App extends Component {
 
                 <div className="stardb-app">
                     <AppHeader />
-                    {/* { planet } */}
+                    { planet }
                     {/* <button
                         className="toggle-planet btn btn-warning btn-lg"
                         onClick={this.toggleRandomPlanet}

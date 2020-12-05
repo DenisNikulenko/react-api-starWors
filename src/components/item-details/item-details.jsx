@@ -9,7 +9,7 @@ const Record = (props) => {
     return(
         <li className="list-group-item">
             <span className="term">{label}</span>
-            <span>{item[field]}</span>
+            <span>{item[field] }</span>
         </li>
     );
 };
